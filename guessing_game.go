@@ -1,33 +1,33 @@
-//guessing_game.go
-package main
+// guessing_game.go
+package guessinggame
 
 import (
-	"fmt"
-	"math/rand"
-	"time"
+    "fmt"
+    "math/rand"
+    "time"
 )
 
-func main() {
-	rand.Seed(time.Now().UnixNano())
+// Play starts the guessing game
+func Play() {
+    rand.Seed(time.Now().UnixNano())
+    target := rand.Intn(100) + 1
 
-	target := rand.Intn(100) + 1
+    fmt.Println("Welcome to the Number Guessing Game!")
+    fmt.Println("I have selected a random number between 1 and 100.")
+    fmt.Println("Can you guess it?")
 
-	fmt.Println("Guess a number between 1 and 100")
+    var guess int
+    for {
+        fmt.Print("Enter your guess: ")
+        fmt.Scanln(&guess)
 
-	var guess int
-
-	for {
-		fmt.Print("Enter your guess:")
-		fmt.Scanln(&guess)
-
-		//check
-		if guess < target {
-			fmt.Println("Too low")
-		} else if guess > target {
-			fmt.Println("Too high")
-		} else {
-			fmt.Println("You got it!")
-			break
-		}
-	}
+        if guess < target {
+            fmt.Println("Too low!")
+        } else if guess > target {
+            fmt.Println("Too high!")
+        } else {
+            fmt.Println("Congratulations! You guessed it!")
+            break
+        }
+    }
 }
